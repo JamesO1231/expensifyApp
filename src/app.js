@@ -2,16 +2,16 @@ console.log('App.js is running');
 
 // JSX - Javascript XML
 // var template = <p>This is JSX from app.js</p>;
-// var template = (
-//   <div>
-//     <h1>Nailed it</h1>
-//     <p>Words</p>;
-//     <ol>
-//       <li>First</li>
-//       <li>Second</li>
-//     </ol>
-//   </div>
-// );
+var template = (
+  <div>
+    <h1>Nailed it</h1>
+    <p>Words</p>;
+    <ol>
+      <li>First</li>
+      <li>Second</li>
+    </ol>
+  </div>
+);
 
 var templateTwo = (
   <div>
