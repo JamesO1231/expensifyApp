@@ -1,6 +1,7 @@
 {
   "name": "indecisionapp",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,9 +16,9 @@
     "url": "https://github.com/JamesO1231/workingWithReact/issues"
   },
   "homepage": "https://github.com/JamesO1231/workingWithReact#readme",
-  "description": "",
-  "dependencies": {},
   "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.8",
     "@babel/preset-react": "^7.16.7"
   }
