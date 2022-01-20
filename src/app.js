@@ -1,11 +1,13 @@
 console.log('App.js is running');
 
-// JSX - Javascript XML
-// var template = <p>This is JSX from app.js</p>;
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Give in to the power of the computer',
+}
 var template = (
   <div>
-    <h1>Nailed it</h1>
-    <p>Words</p>;
+    <h1>{app.title}</h1>
+    <p>{app.subtitle}</p>
     <ol>
       <li>First</li>
       <li>Second</li>
@@ -13,13 +15,21 @@ var template = (
   </div>
 );
 
+var user = {
+  name: 'Bob',
+  age: 26,
+  location: 'New York',
+}
+var userName = 'Mike'
+var userAge = 27;
+var userLocation = 'Denver';
 var templateTwo = (
   <div>
-    <h1>James</h1>
-    <p>Age: 30</p>
-    <p>Location: New York</p>
+    <h1>{user.name}</h1>
+    <p>Age: {user.age}</p>
+    <p>Location: {user.location}</p>
   </div>
 );
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
