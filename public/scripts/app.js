@@ -3,7 +3,8 @@
 console.log('App.js is running');
 var app = {
   title: 'Indecision App',
-  options: []
+  subtitle: 'Give in to the power of the computer',
+  options: ['One', 'Two']
 };
 var template = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, app.title), app.subtitle && /*#__PURE__*/React.createElement("p", null, app.subtitle), /*#__PURE__*/React.createElement("p", null, app.options.length > 0 ? 'Here are your options' : 'No options'), /*#__PURE__*/React.createElement("ol", null, /*#__PURE__*/React.createElement("li", null, "First"), /*#__PURE__*/React.createElement("li", null, "Second")));
 var user = {
