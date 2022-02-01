@@ -1,13 +1,38 @@
 class IndecisionApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.deleteOptions = this.deleteOptions.bind(this);
+    this.pickOption = this.pickOption.bind(this);
+    this.state = {
+      options: ['Thing one', 'Thing two', 'Things four']
+    };
+  }
+  deleteOptions() {
+    this.setState(() => {
+      return {
+        options: []
+      };
+    });
+  }
+  pickOption() {
+    const randomNum = Math.floor(Math.random() * this.state.options.length);
+    const option = this.state.options[randomNum];
+    alert(option);
+  }
   render() {
     const title = 'Indecision';
     const subtitle = 'Put your life in the hands of the computer';
-    const options = ['Thing one', 'Thing two', 'Things four'];
     return (
       <div>
-        <Header title={title} subtitle={subtitle}/>
-        <Action />
-        <Options options={options}/>
+        <Header title={title} subtitle={subtitle} />
+        <Action 
+          hasOptions={this.state.options.length > 0} 
+          pickOption={this.pickOption}
+        />
+        <Options 
+          options={this.state.options} 
+          deleteOptions={this.deleteOptions}
+        />
         <AddOption />
       </div>
     );
@@ -26,34 +51,28 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
-  handleClick() {
-    alert('handleClick');
-  }
   render() {
     return (
       <div>
-        <button onClick={this.handleClick}>What should I do?</button>
+        <button 
+        onClick={this.props.pickOption}
+        disabled={!this.props.hasOptions}
+        >
+          What should I do?
+        </button>
       </div>
     );
   }
 }
 
 class Options extends React.Component {
-  constructor(props) {
-    super(props);
-    this.removeAll = this.removeAll.bind(this);
-  }
-  removeAll() {
-    console.log(this.props.options);
-    // alert('Remove All');
-  }
   render() {
     return (
       <div>
         {
           this.props.options.map((option) => <Option key={option} optionText={option}/>)
         }
-        <button onClick={this.removeAll}>Remove All</button>
+        <button onClick={this.props.deleteOptions}>Remove All</button>
       </div>
     );
   }
