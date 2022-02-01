@@ -35,6 +35,7 @@ var IndecisionApp = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.deleteOptions = _this.deleteOptions.bind(_assertThisInitialized(_this));
     _this.pickOption = _this.pickOption.bind(_assertThisInitialized(_this));
+    _this.addOption = _this.addOption.bind(_assertThisInitialized(_this));
     _this.state = {
       options: ['Thing one', 'Thing two', 'Things four']
     };
@@ -58,6 +59,21 @@ var IndecisionApp = /*#__PURE__*/function (_React$Component) {
       alert(option);
     }
   }, {
+    key: "addOption",
+    value: function addOption(option) {
+      if (!option) {
+        return 'Enter valid value to add item';
+      } else if (this.state.options.indexOf(option) > -1) {
+        return 'This option already exists';
+      }
+
+      this.setState(function (prevState) {
+        return {
+          options: prevState.options.concat([option])
+        };
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var title = 'Indecision';
@@ -71,7 +87,9 @@ var IndecisionApp = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/React.createElement(Options, {
         options: this.state.options,
         deleteOptions: this.deleteOptions
-      }), /*#__PURE__*/React.createElement(AddOption, null));
+      }), /*#__PURE__*/React.createElement(AddOption, {
+        addOption: this.addOption
+      }));
     }
   }]);
 
@@ -177,26 +195,35 @@ var AddOption = /*#__PURE__*/function (_React$Component6) {
 
   var _super6 = _createSuper(AddOption);
 
-  function AddOption() {
+  function AddOption(props) {
+    var _this2;
+
     _classCallCheck(this, AddOption);
 
-    return _super6.apply(this, arguments);
+    _this2 = _super6.call(this, props);
+    _this2.handleSubmit = _this2.handleSubmit.bind(_assertThisInitialized(_this2));
+    _this2.state = {
+      error: undefined
+    };
+    return _this2;
   }
 
   _createClass(AddOption, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      var option = e.target.elements.option.value;
-
-      if (option) {
-        alert(option);
-      }
+      var option = e.target.elements.option.value.trim();
+      var error = this.props.addOption(option);
+      this.setState(function () {
+        return {
+          error: error
+        };
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("form", {
+      return /*#__PURE__*/React.createElement("div", null, this.state.error && /*#__PURE__*/React.createElement("p", null, this.state.error), /*#__PURE__*/React.createElement("form", {
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/React.createElement("input", {
         type: "text",
