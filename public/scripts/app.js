@@ -37,7 +37,7 @@ var IndecisionApp = /*#__PURE__*/function (_React$Component) {
     _this.pickOption = _this.pickOption.bind(_assertThisInitialized(_this));
     _this.addOption = _this.addOption.bind(_assertThisInitialized(_this));
     _this.state = {
-      options: ['Thing one', 'Thing two', 'Things four']
+      options: props.options
     };
     return _this;
   }
@@ -96,40 +96,24 @@ var IndecisionApp = /*#__PURE__*/function (_React$Component) {
   return IndecisionApp;
 }(React.Component);
 
-var Header = function Header(props) {
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, props.title), /*#__PURE__*/React.createElement("h2", null, props.subtitle));
-}; // class Header extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <h1>{this.props.title}</h1>
-//         <h2>{this.props.subtitle}</h2>
-//       </div>
-//     );
-//   }
-// }
+IndecisionApp.defaultProps = {
+  options: []
+};
 
+var Header = function Header(props) {
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, props.title), props.subtitle && /*#__PURE__*/React.createElement("h2", null, props.subtitle));
+};
+
+Header.defaultProps = {
+  title: 'Indecision'
+};
 
 var Action = function Action(props) {
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("button", {
     onClick: props.pickOption,
     disabled: !props.hasOptions
   }, "What should I do?"));
-}; // class Action extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <button 
-//         onClick={this.props.pickOption}
-//         disabled={!this.props.hasOptions}
-//         >
-//           What should I do?
-//         </button>
-//       </div>
-//     );
-//   }
-// }
-
+};
 
 var Options = function Options(props) {
   return /*#__PURE__*/React.createElement("div", null, props.options.map(function (option) {
@@ -140,32 +124,11 @@ var Options = function Options(props) {
   }), /*#__PURE__*/React.createElement("button", {
     onClick: props.deleteOptions
   }, "Remove All"));
-}; // class Options extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         {
-//           this.props.options.map((option) => <Option key={option} optionText={option}/>)
-//         }
-//         <button onClick={this.props.deleteOptions}>Remove All</button>
-//       </div>
-//     );
-//   }
-// }
-
+};
 
 var Option = function Option(props) {
   return /*#__PURE__*/React.createElement("div", null, props.optionText);
-}; // class Option extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         {this.props.optionText}
-//       </div>
-//     );
-//   }
-// }
-
+};
 
 var AddOption = /*#__PURE__*/function (_React$Component2) {
   _inherits(AddOption, _React$Component2);
