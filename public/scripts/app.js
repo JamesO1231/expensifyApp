@@ -44,6 +44,16 @@ var IndecisionApp = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(IndecisionApp, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('componentDidMount');
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      console.log('componentDidUpdate');
+    }
+  }, {
     key: "deleteOptions",
     value: function deleteOptions() {
       this.setState(function () {

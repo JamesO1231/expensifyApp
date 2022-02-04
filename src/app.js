@@ -9,6 +9,16 @@ class IndecisionApp extends React.Component {
       options: props.options
     };
   }
+  componentDidMount() {
+    console.log('componentDidMount');
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate');
+  }
+  // componentWillUnmount - when the component is removed from the page, or when the user switches pages.
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+  }
   deleteOptions() {
     this.setState(() => ({ options: [] }));
   }
