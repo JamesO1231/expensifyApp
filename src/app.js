@@ -10,10 +10,22 @@ class IndecisionApp extends React.Component {
     };
   }
   componentDidMount() {
-    console.log('componentDidMount');
+    try {
+      const json = localStorage.getItem('options');
+      const options = JSON.parse(json);
+      if (options) {
+        this.setState(() => ({ options }));
+      }
+    } catch (e) {
+
+    }
   }
   componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate');
+    if (prevState.options.length !== this.state.options.length) {
+      const json = JSON.stringify(this.state.options);
+      localStorage.setItem('options', json);
+      console.log('componentDidUpdate');
+    }
   }
   // componentWillUnmount - when the component is removed from the page, or when the user switches pages.
   componentWillUnmount() {
@@ -98,6 +110,7 @@ const Action = (props) => {
 const Options = (props) => {
   return (
     <div>
+    {props.options.length === 0 && <p>Please add an option to start</p>}
       {
         props.options.map((option) => (
           <Option 
@@ -140,6 +153,9 @@ class AddOption extends React.Component {
     const option = e.target.elements.option.value.trim();
     const error = this.props.addOption(option);
     this.setState(() => ({ error }));
+    if (!error) {
+      e.target.elements.option.value = '';
+    }
   }
   render() {
     return (
