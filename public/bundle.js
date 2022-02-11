@@ -75,12 +75,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 console.log('app.js is running');
-console.log(__WEBPACK_IMPORTED_MODULE_0__utils__["b" /* square */](4));
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils__["c" /* square */](4));
 console.log(__WEBPACK_IMPORTED_MODULE_0__utils__["a" /* add */](100, 23));
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils__["b" /* default */](100, 81));
 
 
-console.log(__WEBPACK_IMPORTED_MODULE_1__person__["b" /* isAdult */](18));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person__["c" /* isAdult */](18));
 console.log(__WEBPACK_IMPORTED_MODULE_1__person__["a" /* canDrink */](20));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person__["b" /* default */](65));
+
 
 
 /***/ }),
@@ -91,25 +94,32 @@ console.log(__WEBPACK_IMPORTED_MODULE_1__person__["a" /* canDrink */](20));
 console.log('utils.js is running');
 
 const square = (x) => x * x;
-/* harmony export (immutable) */ __webpack_exports__["b"] = square;
+/* harmony export (immutable) */ __webpack_exports__["c"] = square;
 
 
 const add = (a, b) => a + b;
 /* harmony export (immutable) */ __webpack_exports__["a"] = add;
 
 
-// export { square, add };
+// const subtract = (a, b) => a - b;
+
+/* harmony default export */ __webpack_exports__["b"] = ((a, b) => a - b);
+// export { square, add, subtract as default };
 
 /***/ }),
 /* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isAdult; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return isAdult; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return canDrink; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isSenior; });
 const isAdult = (age) => age >= 18;
 
 const canDrink = (age) => age >= 21;
+
+const isSenior = (age) => age >= 65;
+
 
 
 
